@@ -1,6 +1,6 @@
-module Wechat
+module WechatSupport
   class Railtie < Rails::Railtie
-    config.wechat = Wechat::Config.new
+    config.wechat = WechatSupport::Config.new
     intializer "wechat.intialize" do |app|
       app.config.wechat
     end

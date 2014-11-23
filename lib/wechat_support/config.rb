@@ -1,4 +1,4 @@
-module Wechat
+module WechatSupport
   class Config
     class << self
       mattr_accessor :app_id
