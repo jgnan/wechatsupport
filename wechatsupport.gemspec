@@ -2,13 +2,13 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name = %q{wechat-support}
+  s.name = %q{wechatsupport}
   s.version = "0.1.0"
   s.author = "Justice Jiang"
   s.licenses = ["MIT"]
   s.email = "jgnan1981@163.com"
   s.platform    = Gem::Platform::RUBY
-  s.homepage    = "http://github.com/jgnan1981/wechat-support"
+  s.homepage    = "http://github.com/jgnan1981/wechatsupport"
   s.summary = %q{微信公众平台API实现支持}
   s.description = %q{此项目用于帮助公众平台开发者快速接入公众平台}
 

@@ -1,7 +1,8 @@
 require 'rails'
+require 'wechat/jobs'
 
-module WechatSupport
-  autoload :Jobs, 'wechat-support/jobs'
+module Wechat
+  autoload :Jobs, 'wechat/jobs'
   mattr_accessor :app_id
   mattr_accessor :app_secret
   # this token should not be set, it should be update by a job

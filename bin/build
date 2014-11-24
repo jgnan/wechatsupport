@@ -1,5 +1,5 @@
 DIR="$(dirname $( cd "$( dirname "$0" )" && pwd ))"
 cd $DIR
-rm $DIR/wechat-support-*
-gem build $DIR/wechat-support.gemspec
-gem install wechat-support
+rm $DIR/wechatsupport-*
+gem build $DIR/wechatsupport.gemspec
+gem install wechatsupport
