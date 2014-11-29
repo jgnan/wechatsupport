@@ -1,18 +1,20 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
 
+require 'wechat/version'
+
 Gem::Specification.new do |s|
   s.name = %q{wechatsupport}
-  s.version = "0.1.0"
+  s.version = Wechat::VERSION
   s.author = "Justice Jiang"
-  s.licenses = ["MIT"]
+  s.license = "MIT"
   s.email = "jgnan1981@163.com"
   s.platform    = Gem::Platform::RUBY
   s.homepage    = "http://github.com/jgnan1981/wechatsupport"
   s.summary = %q{微信公众平台API实现支持}
   s.description = %q{此项目用于帮助公众平台开发者快速接入公众平台}
 
-  s.files = Dir["{lib,spec,vendor}/**/*", "[A-Z]*"] - ["Gemfile.lock"]
+  s.files = Dir["{lib,app,config,spec,vendor}/**/*", "[A-Z]*"] - ["Gemfile.lock"]
   s.require_paths = ["lib"]
   s.required_ruby_version = '>= 2.1.0'
 

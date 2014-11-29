@@ -8,6 +8,7 @@ module Wechat
       json = JSON.parse resp
       Wechat.access_token= json['access_token']
       Rails.logger.debug {"[WechatJobs.update_token] now the access_token updated to  -> #{Wechat.access_token}"}
+      json  # return the json object to the response
     end
   end
 end
