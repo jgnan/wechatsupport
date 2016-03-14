@@ -1,6 +1,5 @@
 require 'rails'
 require 'wechat/jobs'
-require 'wechat/rails'
 
 module Wechat
   autoload :Jobs, 'wechat/jobs'
@@ -17,3 +16,4 @@ module Wechat
   end
 end
 
+require 'wechat/rails'
