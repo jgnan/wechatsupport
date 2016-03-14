@@ -1,9 +1,18 @@
 # coding: utf-8
 class Wechat::CommonapiController < WechatController
+  include Wechat::WechatHelper
   # GET /update_token
   # This method will help use to update the wechat's access token for your following openapi request immediately
   #
   def update_access_token
     render json: Wechat::Jobs.update_token 
+  end
+
+
+  # GET /verify_signature
+  # This api will check wechat verify message when you registered this url on wechat platform.
+  def verify_signature
+    logger.debug {"[verify_signature] We receive params -> #{params}"}
+    render text: Wechat::WechatHelper.verify_message_params(params[:signature], params[:timestamp], params[:nounce],params[:echostr])
   end
 end

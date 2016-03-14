@@ -7,11 +7,13 @@ module Wechat
   mattr_accessor :app_secret
   # this token should not be set, it should be update by a job
   mattr_accessor :access_token
+  mattr_accessor :cgi_base
   # By setting parent controller like this , you can adjust our controller to extends a new one.
   mattr_accessor :parent_controller
   @@parent_controller = "ApplicationController"
 
   def self.setup
+    Wechat.cgi_base='https://api.weixin.qq.com/cgi-bin'
     yield self
   end
 end

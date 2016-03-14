@@ -5,7 +5,8 @@ module Wechat
     # Hash wechat message's params to sha1, according to wechat's standard.
     # We'll just join the nonce, timestamp and our access_token to use sha1 algorithm to do it
     def hash_message_params(nonce,timestamp)
-      Digest::SHA1.hexdigest Wechat.access_token + timestamp + nonce       
+      encoded = [Wechat.access_token, timestamp,nonce].sort.join
+      Digest::SHA1.hexdigest encoded
     end
 
     #
