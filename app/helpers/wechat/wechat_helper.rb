@@ -14,7 +14,7 @@ module Wechat
     # Verify whether a message request is validated.
     # If true the echostr will be return, or false if not
     def verify_signature_message(signature,timestamp, nonce, echostr)
-      hash_message_params(timestamp,nonce) == signature ? echostr : false
+      hash_message_params(nonce,timestamp) == signature ? echostr : false
     end
   end
 end
