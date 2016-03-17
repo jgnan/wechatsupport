@@ -12,7 +12,7 @@ class Wechat::CommonapiController < WechatController
   # GET /verify_signature
   # This api will check wechat verify message when you registered this url on wechat platform.
   def verify_signature
-    logger.debug {"[verify_signature] We receive params -> #{params}"}
+    logger.info {"[verify_signature] We receive params -> #{params}"}
     render text: verify_signature_message(params[:signature], params[:timestamp], params[:nounce],params[:echostr])
   end
 end
