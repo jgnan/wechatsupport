@@ -7,6 +7,8 @@ module Wechat
   mattr_accessor :app_secret
   # this token should not be set, it should be update by a job
   mattr_accessor :access_token
+  mattr_accessor :verify_token
+  mattr_accessor :sign_key
   mattr_accessor :cgi_base
   # By setting parent controller like this , you can adjust our controller to extends a new one.
   mattr_accessor :parent_controller
