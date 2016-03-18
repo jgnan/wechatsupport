@@ -16,5 +16,14 @@ module Wechat
     def verify_signature_message(signature,timestamp, nonce, echostr)
       hash_message_params(nonce,timestamp) == signature ? echostr : false
     end
+
+    #
+    # Generate sdk signature
+    #
+    def gen_sdk_sign opts={}
+      Digest::SHA1.hexdigest opts.sort_by {|_,v| v}
+                            .map {|k,v| "#{k}=#{v}"}
+                            .join('&')
+    end
   end
 end
