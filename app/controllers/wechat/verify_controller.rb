@@ -7,8 +7,50 @@ class Wechat::VerifyController < WechatController
     render json: Wechat::Jobs.update_token
   end
 
-  def gen_sdk_sign
-    render text: gen_sign({noncestr:params[:nonce],timestamp:params[:ts],jsapi_ticket:Wechat.access_token,url: url})
+  #
+  # GET /access-token
+  # Get current access token
+  #
+  def access_token
+    logger.debug {"[access_token] Access token is -> #{Wechat.access_token}"}
+    render text: 'ok'
+  end
+
+  #
+  # GET /wechat/gen-sdk-sign
+  # Generate sdk signature
+  #
+  def sdk_sign
+    source = {
+        noncestr:params[:nonce],
+        timestamp:params[:ts],
+        jsapi_ticket:Wechat.access_token,
+        url: request.original_url}
+    sign = gen_sdk_sign(source)
+    logger.debug {"[gen_sdk_sign] Generate signature to #{source.to_json}, signature => #{sign}"}
+    render text: sign
+  end
+
+  # GET /sdk-config
+  # Generate sdk config script for client
+  #
+  def sdk_config
+    source = {
+        noncestr:rand.to_s,
+        timestamp:Time.new.to_i.to_s,
+        jsapi_ticket:Wechat.access_token,
+        url: params[:url]}
+    sign = gen_sdk_sign source 
+    js_apis = params[:js_apis] || ''
+    js_apis = js_apis.split(',').map {|v| "'#{v}'"}.join(',')
+    render text: """
+      wx.config({
+        appId:'#{Wechat.app_id}',
+        timestamp:'#{source[:timestamp]}',
+        nonceStr:'#{source[:noncestr]}',
+        signature:'#{sign}',
+        jsApiList:[#{js_apis}]})
+    """
   end
 
 
